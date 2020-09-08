@@ -24,18 +24,12 @@ elif type_to_calculate == 'a':
     n_of_periods = int(input("Enter the number of periods:\n"))
     credit_interest = float(input("Enter the credit interest:\n"))
     i = credit_interest / (12 * 100)
-    first_calc = i * ((1 + i) ** n_of_periods)
-    second_calc = ((1 + i) ** n_of_periods) - 1
-    third_calc = first_calc / second_calc
-    a = math.ceil(credit_principal * third_calc)
-    print("Your monthly payment = {}!".format(a))
+    a = ((i * ((1 + i) ** n_of_periods)) / (((1 + i) ** n_of_periods) - 1)) * credit_principal
+    print("Your monthly payment = {}!".format(math.ceil(a)))
 elif type_to_calculate == 'p':
     annuity_payment = float(input("Enter the annuity payment:\n"))
     n_of_periods = int(input("Enter the number of periods:\n"))
     credit_interest = float(input("Enter the credit interest:\n"))
     i = credit_interest / (12 * 100)
-    first_calc = i * ((1 + i) ** n_of_periods)
-    second_calc = ((1 + i) ** n_of_periods) - 1
-    third_calc = first_calc / second_calc
-    credit_principal = int(annuity_payment / third_calc)
-    print("Your credit principal = {}!".format(credit_principal))
+    credit_principal = annuity_payment / ((i * ((1 + i) ** n_of_periods)) / (((1 + i) ** n_of_periods) - 1))
+    print("Your credit principal = {}!".format(int(credit_principal)))
